@@ -177,12 +177,18 @@ ini_set('display_errors', 1);
           // Get all comics using the model
           $topComics = $comicModel->getAll();
           
-          // Sort by favorites
-          usort($topComics, function($a, $b) {
-            return $b['favorites'] - $a['favorites'];
-          });
+          // Kiểm tra nếu $topComics là mảng hợp lệ
+          if (is_array($topComics)) {
+              // Sắp xếp theo số lượng yêu thích
+              usort($topComics, function($a, $b) {
+                  return $b['favorites'] - $a['favorites'];
+              });
+          } else {
+              // Xử lý khi $topComics không phải là mảng (ví dụ: null hoặc rỗng)
+              $topComics = []; // Mặc định là mảng rỗng
+          }
           
-          // Get top 8
+          // Lấy 8 truyện đứng đầu
           $topComics = array_slice($topComics, 0, 8);
           
           foreach($topComics as $comic): 
@@ -195,7 +201,7 @@ ini_set('display_errors', 1);
                     <span class="up-badge">UP</span>
                   <?php endif; ?>
                 </div>
-                <img src="public/image/<?php echo $comic['cover_image']; ?>" alt="<?php echo $comic['title']; ?>">
+                <img src="app/upload/<?php echo $comic['cover_image']; ?>" alt="<?php echo $comic['title']; ?>">
                 <div class="manga-title"><?php echo $comic['title']; ?></div>
               </div>
             </div>
@@ -423,5 +429,29 @@ ini_set('display_errors', 1);
         </div>
       </div>
     </div>
+
+    <script>
+      // Khởi tạo Swiper slider
+      const swiper = new Swiper('.swiper-container', {
+        spaceBetween: 50, // Khoảng cách giữa các slide
+        slidesPerView: 5, // Số lượng slide hiển thị cùng lúc
+        loop: true, // Lặp lại slider
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+          1024: {
+            slidesPerView: 5, // Hiển thị 5 slide trên màn hình rộng
+          },
+          768: {
+            slidesPerView: 3, // Hiển thị 3 slide trên màn hình tablet
+          },
+          480: {
+            slidesPerView: 1, // Hiển thị 1 slide trên màn hình nhỏ
+          },
+        },
+      });
+    </script>
   </body>
 </html>

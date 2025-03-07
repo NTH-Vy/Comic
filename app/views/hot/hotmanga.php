@@ -24,109 +24,75 @@ use App\Models\ComicModel;
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
     <style>
-        body{
-        margin: 0;
-        padding: 0;
+        body {
+          margin: 0;
+          padding: 0;
         }
         
         .swiper-container {
-        margin-top:70px; /* Thêm khoảng cách phía trên slider */
+          margin-top: 70px; /* Thêm khoảng cách phía trên slider */
         }
-        
-      /* .swiper-wrapper {
-        display: flex;
-      } */
 
-      .swiper-slide {
-        width: 300px;
-        height: 400px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        transition: transform 0.5s, opacity 0.5s;
-        margin: 0;
-      }
+        .swiper-slide {
+          width: 300px;
+          height: 400px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 15px;
+          overflow: hidden;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+          transition: transform 0.5s, opacity 0.5s;
+          margin: 0;
+        }
 
-      .swiper-slide img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
+        .swiper-slide img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
 
-      /* Nút điều hướng */
-      .swiper-button-next,
-      .swiper-button-prev {
-        background-color: rgba(255, 255, 255, 0.8);
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        color: #283655;
-        transform: translateY(-50%);
-        z-index: 10;
-        transition: all 0.3s ease;
-      }
+        /* Nút điều hướng */
+        .swiper-button-next,
+        .swiper-button-prev {
+          background-color: rgba(255, 255, 255, 0.8);
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          color: #283655;
+          transform: translateY(-50%);
+          z-index: 10;
+          transition: all 0.3s ease;
+        }
 
-      .swiper-button-next {
-        right: 20px;
-      }
+        .swiper-button-next {
+          right: 20px;
+        }
 
-      .swiper-button-prev {
-        left: 20px;
-      }
+        .swiper-button-prev {
+          left: 20px;
+        }
 
-      .swiper-button-next:hover,
-      .swiper-button-prev:hover {
-        background-color: #283655;
-        color: white;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-        transform: translateY(-50%) scale(1.1);
-      }
+        .swiper-button-next:hover,
+        .swiper-button-prev:hover {
+          background-color: #283655;
+          color: white;
+          box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+          transform: translateY(-50%) scale(1.1);
+        }
 
-      .swiper-button-next::after,
-      .swiper-button-prev::after {
-        font-size: 20px;
-        font-weight: bold;
-      }
+        .swiper-button-next::after,
+        .swiper-button-prev::after {
+          font-size: 20px;
+          font-weight: bold;
+        }
     </style>
   </head>
   <body>
-        <!-- Swiper Container -->
+    <!-- Swiper Container -->
     <div class="swiper-container">
       <div class="swiper-wrapper">
         <!-- Các bìa truyện -->
-        <div class="swiper-slide">
-          <img src="public/image/6.jpeg" alt="Manga 1" />
-        </div>
-        <div class="swiper-slide">
-          <img src="public/image/2.jpeg" alt="Manga 2" />
-        </div>
-        <div class="swiper-slide">
-          <img src="public/image/5.jpeg" alt="Manga 3" />
-        </div>
-        <div class="swiper-slide">
-          <img src="public/image/4.jpeg" alt="Manga 4" />
-        </div>
-        <div class="swiper-slide">
-          <img src="public/image/3.jpeg" alt="Manga 5" />
-        </div>
-        <div class="swiper-slide">
-          <img src="public/image/6.jpeg" alt="Manga 6" />
-        </div>
-        <div class="swiper-slide">
-          <img src="public/image/2.jpeg" alt="Manga 7" />
-        </div>
-        <div class="swiper-slide">
-          <img src="public/image/5.jpeg" alt="Manga 8" />
-        </div>
-        <div class="swiper-slide">
-          <img src="public/image/4.jpeg" alt="Manga 9" />
-        </div>
-        <div class="swiper-slide">
-          <img src="public/image/3.jpeg" alt="Manga 10" />
-        </div>
         <div class="swiper-slide">
           <img src="public/image/6.jpeg" alt="Manga 1" />
         </div>
@@ -162,22 +128,34 @@ use App\Models\ComicModel;
       <div class="swiper-button-next"></div>
       <div class="swiper-button-prev"></div>
     </div>
+    
     <div class="new-updates-ranking">
-    <div class="left-box">
+      <div class="left-box">
         <div class="title-wrapper">
           <h3>TRUYỆN TRANH ĐỀ CỬ</h3>
-            <div class="underline"></div>
+          <div class="underline"></div>
         </div>
+
         <!-- Danh sách truyện mới cập nhật -->
         <div class="manga-list">
           <?php 
           $comicModel = new ComicModel();
           $recommendedComics = $comicModel->getAll();
-          usort($recommendedComics, function($a, $b) {
-            return $b['views'] - $a['views'];
-          });
-          $recommendedComics = array_slice($recommendedComics, 0, 8);
-          
+
+          // Kiểm tra xem $recommendedComics có phải là mảng và không phải null
+          if (is_array($recommendedComics)) {
+              // Sắp xếp mảng theo trường 'views' giảm dần
+              usort($recommendedComics, function($a, $b) {
+                  return $b['views'] - $a['views'];
+              });
+              // Cắt mảng để lấy 8 truyện được yêu thích nhất
+              $recommendedComics = array_slice($recommendedComics, 0, 8);
+          } else {
+              // Xử lý khi không có dữ liệu hợp lệ
+              echo "Không tìm thấy truyện đề cử.";
+              $recommendedComics = []; // Mảng rỗng khi không có truyện
+          }
+
           foreach($recommendedComics as $comic): 
           ?>
             <div class="manga-item">
@@ -195,9 +173,9 @@ use App\Models\ComicModel;
           <?php endforeach; ?>
         </div>
       </div>
-                    
 
-      <div class="right-box">
+      <!-- Phần bên phải có thể là xếp hạng hoặc các nội dung khác, giữ nguyên cấu trúc ban đầu của bạn -->
+     <div class="right-box">
         <div class="title-wrapper">
           <h3>XẾP HẠNG TRUYỆN TRANH<i class="fas fa-chevron-right" style="font-size: 14px; margin-left: 8px;"></i></h3>
           <div class="underline"></div>
@@ -205,78 +183,25 @@ use App\Models\ComicModel;
         
         <!-- Tab Content -->
         <div class="tab-content" id="daily">
+          <?php 
+          $top_comics = $comicModel->getTopComics();
+          $rank = 1;
+          foreach($top_comics as $comic):
+              // $categories = explode(',', $comic['categories']);
+              $first_category = !empty($categories[0]) ? $categories[0] : 'Unknown';
+              $cover_image = !empty($comic['cover_image']) ? "app/upload/" . $comic['cover_image'] : "public/image/no-image.png";
+          ?>
           <div class="ranking-item">
-            <span class="rank">1</span>
-            <img src="public/image/2.jpeg" alt="Be By My Side">
-            <div class="ranking-info">
-              <div class="genre">Romance</div>
-              <h4>Be By My Side</h4>
-              <p class="author">Team yundo / sumto</p>
-            </div>
+              <span class="rank"><?= $rank++ ?></span>
+              <img src="<?= $cover_image ?>" alt="<?= htmlspecialchars($comic['title']) ?>">
+              <div class="ranking-info">
+                  <div class="genre"><?= htmlspecialchars($first_category) ?></div>
+                  <h4><?= htmlspecialchars($comic['title']) ?></h4>
+                  <p class="author"><?= htmlspecialchars($comic['author_name']) ?></p>
+                  <p class="views"><i class="fas fa-eye"></i> <?= number_format($comic['views']) ?></p>
+              </div>
           </div>
-          <div class="ranking-item">
-            <span class="rank">2</span>
-            <img src="public/image/3.jpeg" alt="I've Fallen for the Empire's Greatest Villainess">
-            <div class="ranking-info">
-              <div class="genre">Romance</div>
-              <h4>I've Fallen for the Empire's Greatest Villainess</h4>
-              <p class="author">AJI / Atsushi</p>
-            </div>
-          </div>
-          <div class="ranking-item">
-            <span class="rank">3</span>
-            <img src="public/image/4.jpeg" alt="Girlfriend Manual">
-            <div class="ranking-info">
-              <div class="genre">Romance</div>
-              <h4>Girlfriend Manual</h4>
-              <p class="author">saefira (Merlin)</p>
-            </div>
-          </div>
-          <div class="ranking-item">
-            <span class="rank">4</span>
-            <img src="public/image/5.jpeg" alt="The Necromancer Family's Young Heir">
-            <div class="ranking-info">
-              <div class="genre">Fantasy</div>
-              <h4>The Necromancer Family's Young Heir</h4>
-              <p class="author">Jung seonyui / guback</p>
-            </div>
-          </div>
-          <div class="ranking-item">
-            <span class="rank">5</span>
-            <img src="public/image/6.jpeg" alt="Devilish Son-In-Law">
-            <div class="ranking-info">
-              <div class="genre">Fantasy</div>
-              <h4>Devilish Son-In-Law</h4>
-              <p class="author">Park Soi / iiyuk</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="tab-content" id="monthly" style="display: none;">
-          <div class="ranking-item">
-            <span class="rank">1</span>
-            <img src="public/image/5.jpeg" alt="Manga">
-            <div class="ranking-info">
-              <h4>Bleach</h4>
-              <p>Lượt xem: 45,678</p>
-            </div>
-          </div>
-          <div class="ranking-item">
-            <span class="rank">2</span>
-            <img src="public/image/6.jpeg" alt="Manga">
-            <div class="ranking-info">
-              <h4>Death Note</h4>
-              <p>Lượt xem: 38,901</p>
-            </div>
-          </div>
-          <div class="ranking-item">
-            <span class="rank">3</span>
-            <img src="public/image/2.jpeg" alt="Manga">
-            <div class="ranking-info">
-              <h4>Attack on Titan</h4>
-              <p>Lượt xem: 32,145</p>
-            </div>
-          </div>
+          <?php endforeach; ?>
         </div>
 
         <div class="title-wrapper">
@@ -286,65 +211,24 @@ use App\Models\ComicModel;
 
         <!-- Reading History Content -->
         <div class="tab-content" id="history">
+          <?php 
+          $recent_comics = get_recent_read_comics(6);
+          foreach($recent_comics as $comic):
+              $categories = explode(',', $comic['categories']);
+              $first_category = !empty($categories[0]) ? $categories[0] : 'Unknown';
+              $cover_image = !empty($comic['cover_image']) ? "app/upload/" . $comic['cover_image'] : "public/image/no-image.png";
+              $time_ago = time_elapsed_string($comic['last_read']);
+          ?>
           <div class="ranking-item">
-            <span class="rank"><i class="fas fa-clock" style="color: #666;"></i></span>
-            <img src="public/image/2.jpeg" alt="Last Read Manga">
-            <div class="ranking-info">
-              <div class="genre">Romance</div>
-              <h4>Be By My Side</h4>
-              <p class="author">Chapter 45 • 2 giờ trước</p>
-            </div>
+              <span class="rank"><i class="fas fa-clock" style="color: #666;"></i></span>
+              <img src="<?= $cover_image ?>" alt="<?= htmlspecialchars($comic['title']) ?>">
+              <div class="ranking-info">
+                  <div class="genre"><?= htmlspecialchars($first_category) ?></div>
+                  <h4><?= htmlspecialchars($comic['title']) ?></h4>
+                  <p class="author">Chapter <?= $comic['chapter_number'] ?> • <?= $time_ago ?></p>
+              </div>
           </div>
-          
-          <div class="ranking-item">
-            <span class="rank"><i class="fas fa-clock" style="color: #666;"></i></span>
-            <img src="public/image/3.jpeg" alt="Last Read Manga">
-            <div class="ranking-info">
-              <div class="genre">Fantasy</div>
-              <h4>I've Fallen for the Empire's Greatest Villainess</h4>
-              <p class="author">Chapter 23 • 5 giờ trước</p>
-            </div>
-          </div>
-
-          <div class="ranking-item">
-            <span class="rank"><i class="fas fa-clock" style="color: #666;"></i></span>
-            <img src="public/image/4.jpeg" alt="Last Read Manga">
-            <div class="ranking-info">
-              <div class="genre">Romance</div>
-              <h4>Girlfriend Manual</h4>
-              <p class="author">Chapter 12 • 1 ngày trước</p>
-            </div>
-          </div>
-
-          <div class="ranking-item">
-            <span class="rank"><i class="fas fa-clock" style="color: #666;"></i></span>
-            <img src="public/image/5.jpeg" alt="Last Read Manga">
-            <div class="ranking-info">
-              <div class="genre">Action</div>
-              <h4>The Necromancer Family's Young Heir</h4>
-              <p class="author">Chapter 67 • 2 ngày trước</p>
-            </div>
-          </div>
-
-          <div class="ranking-item">
-            <span class="rank"><i class="fas fa-clock" style="color: #666;"></i></span>
-            <img src="public/image/6.jpeg" alt="Last Read Manga">
-            <div class="ranking-info">
-              <div class="genre">Comedy</div>
-              <h4>Devilish Son-In-Law</h4>
-              <p class="author">Chapter 89 • 3 ngày trước</p>
-            </div>
-          </div>
-
-          <div class="ranking-item">
-            <span class="rank"><i class="fas fa-clock" style="color: #666;"></i></span>
-            <img src="public/image/5.jpeg" alt="Last Read Manga">
-            <div class="ranking-info">
-              <div class="genre">Action</div>
-              <h4>The Necromancer Family's Young Heir</h4>
-              <p class="author">Chapter 67 • 2 ngày trước</p>
-            </div>
-          </div>
+          <?php endforeach; ?>
         </div>
 
         <div class="title-wrapper">
@@ -414,7 +298,6 @@ use App\Models\ComicModel;
             </div>
           </div>
         </div>
-      </div>
       </div>
     </div>
   </body>

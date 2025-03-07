@@ -57,6 +57,7 @@ switch ($action) {
     case 'login':
         $controller = new AccountController();
         $controller->login();
+
         break;
 
     case 'edit_taikhoan':
@@ -226,7 +227,6 @@ switch ($action) {
 
     default:
         $new_comics = $comicModel->getAll();
-        $categories = $comicModel->getAllCategories();
         include "app/Views/home.php";
         break;
 }

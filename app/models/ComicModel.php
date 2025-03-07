@@ -11,7 +11,6 @@ class ComicModel {
         $this->db = Database::getInstance();
     }
 
-    // Thêm các phương thức mới
     public function getChapters($comicId) {
         $sql = "SELECT ch.*, c.title as comic_title 
                 FROM chapters ch
@@ -65,25 +64,16 @@ class ComicModel {
         return $this->db->query($sql, $params)->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // Giữ lại các phương thức hiện có của bạn
-    public function getAll($keyword = "", $categoryId = 0) {
-        // ... code hiện tại của bạn ...
-    }
-
-    public function getAllCategories() {
-        // ... code hiện tại của bạn ...
-    }
-
-    public function getCategoryName($categoryId) {
-        // ... code hiện tại của bạn ...
-    }
-
     public function getAllComics($offset, $limit) {
         try {
-            $sql = "SELECT c.*, d.name as tendm 
+            $sql = "SELECT c.*, a.name as author_name,
+                    GROUP_CONCAT(DISTINCT cat.name) as categories
                     FROM comics c 
-                    LEFT JOIN danhmuc d ON c.iddm = d.id 
-                    ORDER BY c.id DESC 
+                    LEFT JOIN authors a ON c.author_id = a.author_id
+                    LEFT JOIN comic_categories cc ON c.comic_id = cc.comic_id
+                    LEFT JOIN categories cat ON cc.category_id = cat.category_id
+                    GROUP BY c.comic_id
+                    ORDER BY c.comic_id DESC 
                     LIMIT :offset, :limit";
             
             $stmt = $this->db->prepare($sql);
@@ -91,8 +81,7 @@ class ComicModel {
             $stmt->bindValue(':limit', (int)$limit, PDO::PARAM_INT);
             $stmt->execute();
             
-            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            return $result;
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (\PDOException $e) {
             error_log("Error in getAllComics: " . $e->getMessage());
             return [];
@@ -121,6 +110,29 @@ class ComicModel {
             return [];
         }
     }
-
-    // ... các phương thức khác ...
+    public function getAll() {
+        try {
+            $sql = "SELECT * FROM comics";
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (\PDOException $e) {
+            error_log("Error in getAll: " . $e->getMessage());
+            return [];
+        }
+    }
+    public function getTopComics() {
+        try {
+            $sql = "SELECT * FROM comics ORDER BY favorites DESC LIMIT 8";
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (\PDOException $e) {
+            error_log("Error in getTopComics: " . $e->getMessage());
+            return [];
+        }
+    }
+    
+    
+    
 }

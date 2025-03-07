@@ -188,16 +188,18 @@
     </style>
 </head>
 <body>
-    <div class="main-content">
+<div class="main-content">
         <div class="container">
             <div class="register-form-container">
                 <h2>Đăng Nhập</h2>
-                <?php if(isset($_SESSION['error'])): ?>
+
+                <!-- Hiển thị thông báo lỗi nếu có -->
+                <?php if (isset($_SESSION['error'])): ?>
                     <div class="alert alert-danger">
                         <?= $_SESSION['error']; unset($_SESSION['error']); ?>
                     </div>
                 <?php endif; ?>
-                
+
                 <form action="index.php?act=login" method="post">
                     <div class="form-group">
                         <label for="username">Tên đăng nhập</label>
@@ -208,15 +210,11 @@
                         <input type="password" id="password" name="password" required>
                     </div>
                     <button type="submit" class="register-btn">Đăng Nhập</button>
-                    
-                    <?php if(isset($message)): ?>
-                        <p class="message"><?= $message ?></p>
-                    <?php endif; ?>
-                    
-                    <?php if(isset($_SESSION['message'])): ?>
+
+                    <?php if (isset($_SESSION['message'])): ?>
                         <p class="message success"><?= $_SESSION['message']; unset($_SESSION['message']); ?></p>
                     <?php endif; ?>
-                    
+
                     <div class="form-footer">
                         <p>Chưa có tài khoản? <a href="index.php?act=register">Đăng ký</a></p>
                     </div>

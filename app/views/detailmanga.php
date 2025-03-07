@@ -179,7 +179,7 @@ if (!isset($comic)) {
             <div class="manga-info">
                 <div class="manga-header">
                     <div class="manga-cover">
-                        <img src="public/image/<?php echo htmlspecialchars($comic['cover_image']); ?>" 
+                        <img src="app/upload/<?php echo htmlspecialchars($comic['cover_image']); ?>" 
                              alt="<?php echo htmlspecialchars($comic['title']); ?>">
                     </div>
                     <div class="manga-header-info">

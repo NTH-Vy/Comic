@@ -1,7 +1,4 @@
-<?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,6 +18,7 @@ ini_set('display_errors', 1);
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
+    <link rel="stylesheet" href="public/css/home.css">
     <style>
         body{
         margin: 0;
@@ -294,11 +292,15 @@ ini_set('display_errors', 1);
           require_once "app/admin/model/ComicsModel.php";
 
           // Lấy dữ liệu comics từ database
-          $listComics = loadall_comics();
+          $newComics = loadall_comics();
+          usort($newComics, function($a, $b) {
+            return $b['views'] - $a['views'];
+          });
+          $newComics = array_slice($newComics, 0, 8);
+          
+          foreach($newComics as $comic): 
           ?>
-          <?php if (!empty($listComics)): ?>
-            <?php foreach($listComics as $comic): ?>
-              <div class="manga-item">
+            <div class="manga-item">
                 <div class="manga-thumb">
                   <div class="stats-overlay">
                     <span class="view-count"><?php echo number_format($comic['views']); ?> lượt xem</span>
@@ -308,11 +310,11 @@ ini_set('display_errors', 1);
                   </div>
                   <?php
                   // Kiểm tra và hiển thị ảnh
-                  $imagePath = "app/uploads/" . $comic['cover_image'];
+                  $imagePath = "app/upload/" . $comic['cover_image'];
                   if(file_exists($imagePath) && !empty($comic['cover_image'])) {
                       $imageUrl = $imagePath;
                   } else {
-                      $imageUrl = "app/uploads/default.jpg"; // Ảnh mặc định nếu không tìm thấy
+                      $imageUrl = "app/upload/default.jpg"; // Ảnh mặc định nếu không tìm thấy
                   }
                   ?>
                   <img src="<?php echo $imageUrl; ?>" alt="<?php echo $comic['title']; ?>">
@@ -323,9 +325,6 @@ ini_set('display_errors', 1);
                 </div>
               </div>
             <?php endforeach; ?>
-          <?php else: ?>
-            <p>Không có truyện nào được tìm thấy</p>
-          <?php endif; ?>
         </div>
 
         <div class="title-wrapper">
@@ -351,7 +350,7 @@ ini_set('display_errors', 1);
                     <span class="up-badge">UP</span>
                   <?php endif; ?>
                 </div>
-                <img src="public/image/<?php echo $comic['cover_image']; ?>" alt="<?php echo $comic['title']; ?>">
+                <img src="app/upload/<?php echo $comic['cover_image']; ?>" alt="<?php echo $comic['title']; ?>">
                 <div class="manga-title">
                   <span class="manga-title-text"><?php echo $comic['title']; ?></span>
                   <a href="index.php?act=detailmanga&id=<?php echo $comic['comic_id']; ?>" class="read-now-btn">Đọc ngay</a>
@@ -384,7 +383,7 @@ ini_set('display_errors', 1);
                     <span class="up-badge">UP</span>
                   <?php endif; ?>
                 </div>
-                <img src="public/image/<?php echo $comic['cover_image']; ?>" alt="<?php echo $comic['title']; ?>">
+                <img src="app/upload/<?php echo $comic['cover_image']; ?>" alt="<?php echo $comic['title']; ?>">
                 <div class="manga-title">
                   <span class="manga-title-text"><?php echo $comic['title']; ?></span>
                   <a href="index.php?act=detailmanga&id=<?php echo $comic['comic_id']; ?>" class="read-now-btn">Đọc ngay</a>
@@ -410,7 +409,7 @@ ini_set('display_errors', 1);
           foreach($top_comics as $comic):
               $categories = explode(',', $comic['categories']);
               $first_category = !empty($categories[0]) ? $categories[0] : 'Unknown';
-              $cover_image = !empty($comic['cover_image']) ? "upload/" . $comic['cover_image'] : "public/image/no-image.png";
+              $cover_image = !empty($comic['cover_image']) ? "app/upload/" . $comic['cover_image'] : "public/image/no-image.png";
           ?>
           <div class="ranking-item">
               <span class="rank"><?= $rank++ ?></span>
@@ -437,7 +436,7 @@ ini_set('display_errors', 1);
           foreach($recent_comics as $comic):
               $categories = explode(',', $comic['categories']);
               $first_category = !empty($categories[0]) ? $categories[0] : 'Unknown';
-              $cover_image = !empty($comic['cover_image']) ? "upload/" . $comic['cover_image'] : "public/image/no-image.png";
+              $cover_image = !empty($comic['cover_image']) ? "app/upload/" . $comic['cover_image'] : "public/image/no-image.png";
               $time_ago = time_elapsed_string($comic['last_read']);
           ?>
           <div class="ranking-item">

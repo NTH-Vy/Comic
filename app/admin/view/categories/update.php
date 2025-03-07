@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thêm danh mục</title>
+    <title>Chỉnh sửa danh mục</title>
     <link rel="stylesheet" href="public/css/admin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -12,7 +12,7 @@
         <div class="main-content">
             <div class="header">
                 <div class="header-title">
-                    <h1><i class="fas fa-plus"></i> Thêm danh mục</h1>
+                    <h1><i class="fas fa-edit"></i> Chỉnh sửa danh mục</h1>
                 </div>
             </div>
 
@@ -26,15 +26,19 @@
                 <?php endif; ?>
 
                 <div class="edit-form">
-                    <form action="./index.php?act=add_categories" method="POST">
+                    <form action="./index.php?act=update_categories" method="POST">
+                        <!-- Truyền id của danh mục cần sửa -->
+                        <input type="hidden" name="category_id" value="<?= htmlspecialchars($category['category_id']) ?>">
+                        
                         <div class="form-group">
                             <label>Tên danh mục</label>
-                            <input type="text" name="name" required placeholder="Nhập tên danh mục mới">
+                            <input type="text" name="name" 
+                                   value="<?= htmlspecialchars($category['name']) ?>" required>
                         </div>
 
                         <div class="form-actions">
-                            <button type="submit" name="themmoi" value="1" class="save-btn">
-                                <i class="fas fa-save"></i> Lưu danh mục
+                            <button type="submit" name="capnhat" value="1" class="save-btn">
+                                <i class="fas fa-save"></i> Lưu thay đổi
                             </button>
                             <a href="index.php?act=list_categories" class="cancel-btn">
                                 <i class="fas fa-times"></i> Hủy

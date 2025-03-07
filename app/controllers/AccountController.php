@@ -14,11 +14,15 @@ class AccountController {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $username = $_POST['username'];
             $password = $_POST['password'];
-            
+
+            // Kiểm tra tên đăng nhập
             $user = $this->userModel->checkUsername($username);
-            
+
+            // Kiểm tra mật khẩu và tên đăng nhập
             if ($user && password_verify($password, $user['password'])) {
                 $_SESSION['user'] = $user;
+                
+                // Chuyển hướng về trang chủ hoặc trang admin
                 if ($user['role'] === 'admin') {
                     header("Location: /admin/dashboard");
                 } else {
@@ -26,11 +30,13 @@ class AccountController {
                 }
                 exit();
             } else {
+                // Lưu thông báo lỗi vào session và chuyển hướng lại
                 $_SESSION['error'] = "Sai tên đăng nhập hoặc mật khẩu!";
-                header("Location: index.php");
+                header("Location: index.php?act=login"); // Chuyển hướng lại trang login
                 exit();
             }
         }
+        // Hiển thị view đăng nhập
         require_once 'app/Views/account/login.php';
     }
 
@@ -40,8 +46,8 @@ class AccountController {
             $username = $_POST['username'];
             $password = $_POST['password'];
             $confirmPassword = $_POST['confirm-password'];
-            
-            // Validate input
+
+            // Kiểm tra thông tin người dùng
             if (empty($email) || empty($username) || empty($password)) {
                 $_SESSION['error'] = "Vui lòng điền đầy đủ thông tin!";
             } elseif ($password !== $confirmPassword) {
@@ -51,25 +57,27 @@ class AccountController {
             } elseif ($this->userModel->checkUsername($username)) {
                 $_SESSION['error'] = "Tên đăng nhập đã tồn tại!";
             } else {
+                // Mã hóa mật khẩu và thêm người dùng vào cơ sở dữ liệu
                 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
                 try {
                     $this->userModel->insert($email, $username, $hashedPassword);
                     $_SESSION['message'] = "Đăng ký thành công! Vui lòng đăng nhập.";
-                    header("Location: index.php");
+                    header("Location: index.php?act=login"); // Chuyển hướng đến trang đăng nhập
                     exit();
                 } catch (\PDOException $e) {
                     $_SESSION['error'] = "Có lỗi xảy ra, vui lòng thử lại sau!";
-                    header("Location: index.php");
+                    header("Location: index.php?act=register"); // Chuyển hướng đến trang đăng ký
                     exit();
                 }
             }
         }
+        // Hiển thị view đăng ký
         require_once 'app/Views/account/register.php';
     }
 
     public function logout() {
-        unset($_SESSION['user']);
-        header("Location: index.php");
+        unset($_SESSION['user']); // Hủy session người dùng
+        header("Location: index.php"); // Chuyển hướng về trang chủ
         exit();
     }
-} 
+}

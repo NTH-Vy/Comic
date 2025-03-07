@@ -205,17 +205,24 @@
 
       .manga-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
         gap: 20px;
-        padding: 20px;
+        padding: 100px;
         margin-top: 20px;
+      }
+
+      .pagination {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin: 20px 0;
       }
 
       .manga-card {
         background: white;
         border-radius: 8px;
         overflow: hidden;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s;
       }
 
@@ -239,41 +246,60 @@
         color: #333;
       }
 
+      .manga-info .genre {
+        display: inline-block;
+        padding: 2px 8px;
+        background-color: #e9ecef;
+        border-radius: 12px;
+        font-size: 12px;
+        color: #495057;
+        margin-bottom: 5px;
+      }
+
       .filter-section {
         background: white;
-        padding: 20px;
+        padding: 15px;
         margin: 20px;
         border-radius: 8px;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      }
-
-      .search-box {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        margin-bottom: 15px;
+        position: fixed;
+        right: 20px;
+        top: 100px;
+        width: 250px;
+        max-height: 80vh;
+        overflow-y: auto;
+        z-index: 100;
       }
 
       .genre-filters {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
         margin-bottom: 15px;
       }
 
       .genre-btn {
-        padding: 5px 15px;
-        border: none;
-        border-radius: 20px;
-        background: #f0f0f0;
+        padding: 6px 12px;
+        border: 1px solid #eee;
+        border-radius: 15px;
+        background: #f8f9fa;
         cursor: pointer;
-        transition: background 0.3s;
+        transition: all 0.3s ease;
+        font-size: 12px;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .genre-btn:hover {
+        background: #e9ecef;
       }
 
       .genre-btn.active {
         background: #6c5ce7;
         color: white;
+        border-color: #6c5ce7;
       }
 
       .pagination {
@@ -296,106 +322,39 @@
         background: #ccc;
         cursor: not-allowed;
       }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .filter-section {
+            position: static;
+            width: auto;
+            margin: 20px;
+        }
+
+        .manga-grid {
+            margin-right: 20px;
+        }
+
+        .genre-filters {
+            grid-template-columns: repeat(3, 1fr);
+        }
+      }
     </style>
   </head>
   <body>
-        <!-- Swiper Container -->
-    <div class="swiper-container">
-      <div class="swiper-wrapper">
-        <!-- Các bìa truyện -->
-        <div class="swiper-slide">
-          <img src="public/image/6.jpeg" alt="Manga 1" />
-        </div>
-        <div class="swiper-slide">
-          <img src="public/image/2.jpeg" alt="Manga 2" />
-        </div>
-        <div class="swiper-slide">
-          <img src="public/image/5.jpeg" alt="Manga 3" />
-        </div>
-        <div class="swiper-slide">
-          <img src="public/image/4.jpeg" alt="Manga 4" />
-        </div>
-        <div class="swiper-slide">
-          <img src="public/image/3.jpeg" alt="Manga 5" />
-        </div>
-        <div class="swiper-slide">
-          <img src="public/image/6.jpeg" alt="Manga 6" />
-        </div>
-        <div class="swiper-slide">
-          <img src="public/image/2.jpeg" alt="Manga 7" />
-        </div>
-        <div class="swiper-slide">
-          <img src="public/image/5.jpeg" alt="Manga 8" />
-        </div>
-        <div class="swiper-slide">
-          <img src="public/image/4.jpeg" alt="Manga 9" />
-        </div>
-        <div class="swiper-slide">
-          <img src="public/image/3.jpeg" alt="Manga 10" />
-        </div>
-        <div class="swiper-slide">
-          <img src="public/image/6.jpeg" alt="Manga 1" />
-        </div>
-        <div class="swiper-slide">
-          <img src="public/image/2.jpeg" alt="Manga 2" />
-        </div>
-        <div class="swiper-slide">
-          <img src="public/image/5.jpeg" alt="Manga 3" />
-        </div>
-        <div class="swiper-slide">
-          <img src="public/image/4.jpeg" alt="Manga 4" />
-        </div>
-        <div class="swiper-slide">
-          <img src="public/image/3.jpeg" alt="Manga 5" />
-        </div>
-        <div class="swiper-slide">
-          <img src="public/image/6.jpeg" alt="Manga 6" />
-        </div>
-        <div class="swiper-slide">
-          <img src="public/image/2.jpeg" alt="Manga 7" />
-        </div>
-        <div class="swiper-slide">
-          <img src="public/image/5.jpeg" alt="Manga 8" />
-        </div>
-        <div class="swiper-slide">
-          <img src="public/image/4.jpeg" alt="Manga 9" />
-        </div>
-        <div class="swiper-slide">
-          <img src="public/image/3.jpeg" alt="Manga 10" />
-        </div>
-      </div>
-      <!-- Nút điều hướng -->
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-    </div>
-
-    <!-- Thêm phần tìm kiếm và lọc -->
-    <div class="filter-section">
-        <input type="text" class="search-box" placeholder="Tìm kiếm truyện..." id="searchInput">
-        
-        <div class="genre-filters">
-            <?php if(!empty($genres)): ?>
-                <?php foreach($genres as $genre): ?>
-                    <button class="genre-btn" data-genre="<?= $genre['id'] ?>">
-                        <?= htmlspecialchars($genre['name']) ?>
-                    </button>
-                <?php endforeach; ?>
-            <?php endif; ?>
-        </div>
-    </div>
 
     <!-- Hiển thị grid truyện -->
     <div class="manga-grid">
         <?php if(!empty($comics)): ?>
             <?php foreach($comics as $comic): ?>
                 <div class="manga-card">
-                    <a href="index.php?act=detailmanga&id=<?= $comic['id'] ?>">
-                        <img src="uploads/<?= htmlspecialchars($comic['img']) ?>" 
-                             alt="<?= htmlspecialchars($comic['name']) ?>">
+                    <a href="index.php?act=detailmanga&id=<?= $comic['comic_id'] ?>">
+                        <img src="app/upload/<?= htmlspecialchars($comic['cover_image']) ?>" 
+                             alt="<?= htmlspecialchars($comic['title']) ?>">
                         <div class="manga-info">
-                            <h3><?= htmlspecialchars($comic['name']) ?></h3>
-                            <div class="genre"><?= htmlspecialchars($comic['tendm'] ?? 'Chưa phân loại') ?></div>
-                            <p class="view-count">Lượt xem: <?= number_format($comic['luotxem'] ?? 0) ?></p>
+                            <h3><?= htmlspecialchars($comic['title']) ?></h3>
+                            <div class="genre"><?= htmlspecialchars($comic['categories'] ?? 'Chưa phân loại') ?></div>
+                            <p class="view-count">Lượt xem: <?= number_format($comic['views'] ?? 0) ?></p>
                         </div>
                     </a>
                 </div>

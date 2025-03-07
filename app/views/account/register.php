@@ -15,8 +15,8 @@
         }
 
         .main-content {
-            padding: 80px 0; /* Thêm padding để tránh đè lên header và footer */
-            min-height: calc(100vh - 160px); /* Đảm bảo chiều cao tối thiểu */
+            padding: 80px 0;
+            min-height: calc(100vh - 160px);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -146,7 +146,6 @@
             color: #2575fc;
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
             .container {
                 max-width: 90%;
@@ -184,15 +183,23 @@
                     <div class="form-group password-container">
                         <label for="password">Mật khẩu</label>
                         <input type="password" id="password" name="password" required>
+                        <i class="fas fa-eye toggle-password" onclick="togglePassword('password', this)"></i>
                     </div>
                     <div class="form-group password-container">
                         <label for="confirm-password">Xác nhận mật khẩu</label>
                         <input type="password" id="confirm-password" name="confirm-password" required>
+                        <i class="fas fa-eye toggle-password" onclick="togglePassword('confirm-password', this)"></i>
                     </div>
                     <button type="submit" class="register-btn">Đăng Ký</button>
-                    <?php if(isset($message)): ?>
-                        <p class="message"><?= $message ?></p>
+
+                    <?php if(isset($_SESSION['error'])): ?>
+                        <div class="message"><?= $_SESSION['error']; unset($_SESSION['error']); ?></div>
                     <?php endif; ?>
+
+                    <?php if(isset($_SESSION['message'])): ?>
+                        <div class="message"><?= $_SESSION['message']; unset($_SESSION['message']); ?></div>
+                    <?php endif; ?>
+
                     <div class="form-footer">
                         <p>Đã có tài khoản? <a href="index.php?act=login">Đăng nhập</a></p>
                     </div>

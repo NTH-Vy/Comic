@@ -13,7 +13,7 @@ class ComicController {
     public function showFullManga() {
         try {
             $page = isset($_GET['page']) ? max(1, (int)$_GET['page']) : 1;
-            $perPage = 12; // Số truyện mỗi trang
+            $perPage = 16; // Số truyện mỗi trang
             $offset = ($page - 1) * $perPage;
             
             // Lấy dữ liệu

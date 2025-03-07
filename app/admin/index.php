@@ -181,7 +181,7 @@ if (isset($_GET['act'])) {
                 insert_categories($name);
                 $thongbao = "Thêm danh mục thành công";
             }
-            include "categories/add.php";
+            include "view/categories/add.php";
             break;
 
         case 'list_categories':
@@ -201,7 +201,7 @@ if (isset($_GET['act'])) {
             if (isset($_GET['category_id']) && ($_GET['category_id'] > 0)) {
                 $category = loadone_categories($_GET['category_id']);
             }
-            include "categories/update.php";
+            include "view/categories/update.php";
             break;
 
         case 'update_categories':
@@ -212,8 +212,9 @@ if (isset($_GET['act'])) {
                 $thongbao = "Cập nhật danh mục thành công";
             }
             $listcategories = loadall_categories();
-            include "categories/list.php";
+            include "view/categories/list.php";
             break;
+
 
         case 'add_product':
             if (isset($_POST['themmoi']) && ($_POST['themmoi'])) {
