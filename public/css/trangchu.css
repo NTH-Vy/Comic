@@ -1,0 +1,818 @@
+body {
+  background-color: rgb(239, 249, 239);
+}
+
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+  font-size: 0.7vw;
+}
+.boxcenter {
+  width: 80%;
+  margin: 0 auto;
+}
+.row {
+  float: left;
+  width: 100%;
+}
+.mb {
+  margin-bottom: 20px;
+}
+.mb10 {
+  margin-bottom: 10px;
+}
+.mr {
+  margin-right: 2%;
+}
+.demo {
+  background-color: antiquewhite;
+  min-height: 100px;
+}
+/* đầu trang web */
+/* Thêm font chữ thanh lịch */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+
+.header {
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  border: none;
+  font-size: 1vw;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1vw 3vw;
+  height: 80px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: "Poppins", sans-serif;
+}
+
+/* Logo */
+.boxcenter .header img {
+  width: 7vw;
+  height: auto;
+  border-radius: 50%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Liên kết */
+.boxcenter .header a {
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  width: 14vw;
+  height: 3.5vw;
+  font-size: 1vw;
+  font-weight: 600;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.boxcenter .header a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+/* Tiêu đề */
+.header h1 {
+  font-size: 2vw;
+  font-weight: 600;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  margin: 0;
+}
+
+/* section */
+.sectionId {
+  background: linear-gradient(135deg, #009aa6, #006d75);
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1vw 0;
+}
+
+.sectionId ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+.sectionId ul li {
+  font-size: 1.2vw;
+  font-weight: 500;
+  color: white;
+  padding: 1vw 2vw;
+  transition: color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.sectionId ul li:hover {
+  color: #ffeb3b;
+  transform: translateY(-3px);
+}
+
+.sectionId ul li::after {
+  content: "";
+  width: 0;
+  height: 2px;
+  background: #ffeb3b;
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.sectionId ul li:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+.sectionId ul li i {
+  font-size: 1.5vw;
+  margin-right: 0.5vw;
+  transition: transform 0.3s ease;
+}
+
+.sectionId ul li:hover i {
+  transform: rotate(10deg);
+}
+
+/* thanh navbar(menu) */
+/* Menu chính với màu gradient hiện đại */
+.menu {
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 1vw 0;
+  text-align: center;
+}
+
+/* Danh sách menu */
+.menu ul {
+  display: flex;
+  justify-content: center;
+  gap: 2vw;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+/* Item trong menu */
+.menu ul li {
+  display: inline-block;
+  font-size: 1.2vw;
+  font-weight: 500;
+  color: white;
+  padding: 0.8vw 1.5vw;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+  position: relative;
+}
+
+/* Hiệu ứng hover */
+.menu ul li:hover {
+  color: #ffeb3b;
+  transform: translateY(-3px);
+}
+
+.menu ul li:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* Ô tìm kiếm */
+#boxsearch {
+  width: 15vw;
+  height: 2.2vw;
+  border-radius: 8px;
+  border: none;
+  padding: 0 1vw;
+  font-size: 1vw;
+  transition: all 0.3s ease;
+  outline: none;
+  background: rgba(255, 255, 255, 0.3);
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#boxsearch::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+#boxsearch:hover,
+#boxsearch:focus {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  width: 17vw;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Nút tìm kiếm */
+#boxsubmit {
+  width: 4vw;
+  height: 2.2vw;
+  border-radius: 8px;
+  background: #ffeb3b;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1vw;
+  font-weight: bold;
+  color: #333;
+}
+
+#boxsubmit:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Trang Chủ CSS */
+.menu ul li a {
+  color: white;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  font-size: 1vw;
+  opacity: 0.9;
+  position: relative;
+  transition: color 0.3s ease, opacity 0.3s ease;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover - đổi màu nhẹ & hiệu ứng underline */
+.menu ul li a:hover {
+  color: #ffeb3b; /* Màu vàng ánh kim */
+  opacity: 1;
+}
+
+/* Hiệu ứng underline trượt khi hover */
+.menu ul li a::after {
+  content: "";
+  width: 0;
+  height: 2px;
+  background: #ffeb3b; /* Màu vàng ánh kim */
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.menu ul li a:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* nội dung trang */
+
+/* box trái-trang chính sản phẩm */
+.boxtrai {
+  float: left;
+  width: 74%;
+}
+.banner {
+  min-height: 15vw;
+  width: 100%;
+  text-align: center;
+}
+
+.banner img {
+  min-height: 15vw;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* Box sản phẩm */
+.boxsp {
+  float: left;
+  width: 32%;
+  min-height: 15vw;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  padding: 2vw;
+  text-align: center;
+  background: #fff;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.boxsp p {
+  font-size: 1.1vw;
+  color: #ff758c;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.boxsp a {
+  text-decoration: none;
+  color: #333;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  font-size: 1.1vw;
+  display: block;
+  margin-top: 10px;
+  transition: color 0.3s ease;
+}
+
+.boxsp a:hover {
+  color: #ff758c;
+}
+
+/* Hiệu ứng khi hover */
+.boxsp:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Nút thêm vào giỏ hàng */
+.btnaddtocart {
+  margin-top: 1.5vw;
+  padding: 0.8vw 2vw;
+  background: #ff758c;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btnaddtocart:hover {
+  background: #ff5a7c;
+  transform: scale(1.05);
+}
+
+/* Hình ảnh sản phẩm */
+.boxsp .img {
+  min-height: 14vw;
+  text-align: center;
+}
+
+.img img {
+  height: 14vw;
+  border-radius: 6px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.img img:hover {
+  transform: scale(1.05);
+}
+
+/* box phải */
+/* Cột bên phải */
+.boxphai {
+  float: left;
+  width: 24%;
+}
+
+/* Tiêu đề hộp nội dung */
+.boxtitle {
+  color: white;
+  padding: 12px;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  font-size: 1.2vw;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Nội dung hộp */
+.boxcontent {
+  border: 1px solid #ddd;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  min-height: 200px;
+  padding: 20px;
+  background: white;
+  font-size: 1vw;
+  color: #333;
+  font-family: "Poppins", sans-serif;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover - hiệu ứng nâng nhẹ */
+/* .boxcontent:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+} */
+
+/* Nội dung phụ (nền xám) */
+.boxcontent2 {
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 1vw;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Footer hộp nội dung */
+.boxfooter {
+  padding: 12px;
+  background-color: #f4f4f4;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border: 1px solid #ddd;
+  text-align: center;
+  font-size: 0.9vw;
+  font-family: "Poppins", sans-serif;
+  color: #666;
+}
+
+/* box tài khoản */
+/* Tăng line-height cho khoảng cách đẹp hơn */
+.formtaikhoan {
+  line-height: 1.6;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Input chung */
+.formtaikhoan input[type="text"],
+.formtaikhoan input[type="email"],
+.formtaikhoan input[type="password"],
+.frmcontent input[type="text"] {
+  width: 100%;
+  border: 1px solid #ddd;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 1vw;
+  transition: all 0.3s ease;
+}
+
+/* Hover & Focus */
+.formtaikhoan input[type="text"]:focus,
+.formtaikhoan input[type="email"]:focus,
+.formtaikhoan input[type="password"]:focus {
+  border-color: #ff758c;
+  box-shadow: 0 0 8px rgba(255, 117, 140, 0.5);
+  outline: none;
+}
+
+/* Checkbox */
+.formtaikhoan input[type="checkbox"] {
+  border-radius: 5px;
+  transform: scale(1.2);
+  margin-right: 5px;
+}
+
+/* Nút Submit, Reset, Button */
+.formtaikhoan input[type="submit"],
+.frmcontent input[type="submit"],
+.frmcontent input[type="reset"],
+.formtaikhoan input[type="reset"],
+.frmcontent input[type="button"] {
+  border-radius: 8px;
+  padding: 10px 15px;
+  font-size: 1vw;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Nút chính (Submit) */
+.formtaikhoan input[type="submit"],
+.frmcontent input[type="submit"] {
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  color: white;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+.formtaikhoan input[type="submit"]:hover,
+.frmcontent input[type="submit"]:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  opacity: 0.9;
+}
+
+/* Nút phụ (Reset, Button) */
+.frmcontent input[type="reset"],
+.frmcontent input[type="button"],
+.formtaikhoan input[type="reset"] {
+  background: #eee;
+  color: #333;
+}
+
+.frmcontent input[type="reset"]:hover,
+.frmcontent input[type="button"]:hover {
+  background: #ddd;
+  transform: scale(1.02);
+}
+
+/* Link trong form */
+.formtaikhoan li a {
+  color: #ff758c;
+  text-decoration: none;
+  font-size: 1vw;
+}
+
+.formtaikhoan li a:hover {
+  color: #ff7eb3;
+  text-decoration: underline;
+}
+
+/* box danh mục */
+/* Reset danh sách */
+.menudoc ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+/* Mục menu */
+.menudoc ul li {
+  padding: 12px 20px;
+  background: white;
+  border-bottom: 1px solid #eee;
+  transition: all 0.3s ease;
+  font-family: "Poppins", sans-serif;
+  font-size: 1vw;
+  font-weight: bold;
+  position: relative;
+}
+
+/* Link trong menu */
+.menudoc ul li a {
+  color: #333;
+  text-decoration: none;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+/* Hover - Hiệu ứng đổi màu và tăng kích thước */
+.menudoc ul li:hover {
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  transform: scale(1.03);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Hover - Thay đổi màu chữ */
+.menudoc ul li:hover a {
+  color: white;
+}
+
+/* Hiệu ứng gạch chân động khi hover */
+.menudoc ul li::after {
+  content: "";
+  position: absolute;
+  left: 10%;
+  bottom: 0;
+  width: 80%;
+  height: 3px;
+  background: #ff7eb3;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+/* Khi hover, hiển thị gạch chân */
+.menudoc ul li:hover::after {
+  transform: scaleX(1);
+}
+
+/* search box */
+.searbox input[type="text"] {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 1vw;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Hover - Hiệu ứng khi di chuột */
+.searbox input[type="text"]:hover {
+  border-color: #ff7eb3;
+  box-shadow: 0 3px 6px rgba(255, 117, 140, 0.2);
+}
+
+/* Focus - Khi người dùng nhập liệu */
+.searbox input[type="text"]:focus {
+  border-color: #ff758c;
+  box-shadow: 0 0 10px rgba(255, 117, 140, 0.5);
+  outline: none;
+}
+
+/* top 10 yêu thích */
+.top10 {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.top10:hover {
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transform: scale(1.02);
+}
+
+.top10 img {
+  width: 20%;
+  height: 50px;
+  float: left;
+  margin-right: 10px;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+}
+
+.top10:hover img {
+  transform: scale(1.1);
+}
+
+.top10 a {
+  color: #333;
+  font-size: 1vw;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.top10:hover a {
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* chân trang */
+.footer {
+  background: linear-gradient(135deg, #ff758c, #ff7eb3); /* Gradient hiện đại */
+  border: 2px solid #ff7eb3; /* Viền đẹp mắt */
+  font-size: 1vw;
+  color: white;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  transition: all 0.3s ease;
+}
+
+/* header admin trang admin */
+.headeradmin {
+  background-color: #eee;
+  border: 1px #ccc solid;
+  font-size: 1vw;
+  color: #666;
+  border-radius: 5px;
+  padding: 0px 20px;
+}
+.headeradmin h1 {
+  font-size: 2vw;
+}
+.frmtitle {
+  background-color: #eee;
+  border: 1px #ccc solid;
+  font-size: 1vw;
+  color: #666;
+  border-radius: 5px;
+  padding: 0px 20px;
+}
+.frmcontent {
+  padding: 20px 0px;
+}
+/* trang danh sách loại hàng hoá */
+.frmdsloai table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.frmdsloai table th {
+  padding: 20px;
+  background-color: #ccc;
+}
+/* .frmdsloai table th:nth-child(2){
+    width: 30%;
+    background-color: #ccc;
+}
+.frmdsloai table th:nth-child(3){
+    width: 40%;
+    background-color: #ccc;
+}
+.frmdsloai table th:nth-child(4){
+    width: 20%;
+    background-color: #ccc;
+} */
+.frmdsloai table td {
+  padding: 10px 20px;
+  border: 1px #999 solid;
+}
+
+/* phần slide show */
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Caption text */
+.text {
+  color: #4d0808;
+  font-size: 1.2vw;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 1.2vw;
+  width: 1.2vw;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active,
+.dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* END */
+/* css cho phần sản phẩm chi tiết */
+.spct {
+  text-align: center;
+}
+/* thong báo */
+.thongbao {
+  color: red;
+}

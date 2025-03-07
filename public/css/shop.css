@@ -1,0 +1,281 @@
+.products-section {
+    padding: 10px;
+    margin: auto;
+    max-width: 1200px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #1e1f26;
+    margin: 0 0 5px 0;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    margin: 0 0 12px 0;
+    height: 2px;
+    background-color: #1e1f26;
+    width: 100%;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.product-card {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    background: white;
+}
+
+.product-card:hover {
+    transform: translateY(-3px);
+}
+
+.product-image {
+    position: relative;
+    padding-top: 140%;
+}
+
+.product-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-tags {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    display: flex;
+    gap: 5px;
+}
+
+.tag {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+}
+
+.tag.new { background-color: #4CAF50; }
+.tag.sale { background-color: #f44336; }
+.tag.hot { background-color: #ff9800; }
+
+.product-info {
+    padding: 15px;
+    background: white;
+}
+
+.product-title {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.product-price {
+    margin-bottom: 15px;
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: #999;
+    margin-right: 10px;
+}
+
+.discounted-price,
+.current-price {
+    color: #f44336;
+    font-weight: bold;
+}
+
+.product-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-add-cart,
+.btn-buy-now {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 13px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-add-cart {
+    background-color: #1e1f26;
+    color: white;
+}
+
+.btn-buy-now {
+    background-color: #ff5b84;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .products-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+    }
+
+    .product-actions {
+        flex-direction: column;
+    }
+}
+
+/* Thêm styles mới cho layout 2 cột */
+.new-updates-ranking {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    padding: 10px;
+    margin: auto;
+    max-width: 1250px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.left-box {
+    width: 63%;
+    padding: 15px;
+}
+
+.right-box {
+    width: 30%;
+    padding: 15px;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+/* Style cho ranking items */
+.ranking-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 8px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #eee;
+    gap: 15px;
+}
+
+.rank {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    min-width: 25px;
+}
+
+.ranking-item img {
+    width: 60px;
+    height: 85px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.ranking-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.ranking-info .genre {
+    color: #666;
+    font-size: 12px;
+}
+
+.ranking-info h4 {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #333;
+    font-weight: 500;
+}
+
+.ranking-info .author {
+    margin: 0;
+    color: #888;
+    font-size: 12px;
+}
+
+@media (max-width: 768px) {
+    .new-updates-ranking {
+        flex-direction: column;
+    }
+    
+    .left-box,
+    .right-box {
+        width: 100%;
+    }
+}
+
+/* Thêm style cho nút yêu thích */
+.favorite-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+.favorite-btn i {
+    color: #ff5b84;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.favorite-btn:hover {
+    background: #ff5b84;
+}
+
+.favorite-btn:hover i {
+    color: white;
+}
+
+.favorite-btn.active {
+    background: #ff5b84;
+}
+
+.favorite-btn.active i {
+    color: white;
+}

@@ -1,0 +1,473 @@
+.swiper-container {
+  width: 100%;
+  max-width: 1200px;
+  height: 450px;
+  position: relative;
+  margin: 0 auto;
+  padding: 20px;
+  overflow: hidden;
+}
+
+/* .swiper-wrapper {
+        display: flex;
+      } */
+
+.swiper-slide {
+  width: 300px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.5s, opacity 0.5s;
+  margin: 0;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Nút điều hướng */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #000;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.swiper-button-next {
+  right: 10px;
+}
+
+.swiper-button-prev {
+  left: 10px;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  color: #fff;
+}
+.truyen-wrapper {
+  padding: 10px;
+  margin: auto;
+  max-width: 1200px;
+  width: 100%;
+  position: relative;
+  overflow: hidden; /* Ẩn thanh cuộn */
+}
+.title-wrapper {
+  text-align: left; /* Căn chữ và đường gạch ngang về bên trái */
+  width: 100%; /* Cho phép đường gạch ngang chiếm hết chiều rộng */
+}
+
+.title-wrapper h3 {
+  font-size: 16px; /* Kích thước chữ */
+  font-weight: bold; /* Chữ đậm */
+  color: #1e1f26; /* Màu xanh */
+  margin: 0 0 5px 0; /* Khoảng cách dưới chữ */
+}
+
+.title-wrapper .underline {
+  margin: 0 0 12px 0; /* Khoảng cách dưới chữ */
+  height: 2px; /* Độ dày của đường gạch */
+  background-color: #1e1f26; /* Màu xanh đồng bộ với chữ */
+  width: 100%; /* Chiều rộng đầy đủ */
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* 6 cột bằng nhau */
+  gap: 20px;
+  overflow-x: auto; /* Cho phép cuộn ngang nếu màn hình nhỏ */
+  white-space: nowrap;
+}
+
+.card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+}
+/* .card:hover {
+        transform: scale(1.03);
+      } */
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  padding: 10px;
+  text-align: center;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+.overlay-text {
+  color: white;
+  font-size: 1em;
+  font-weight: bold;
+}
+.rank-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #ffd700;
+  color: black;
+  font-size: 1em;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.rank-badge i {
+  color: #fff;
+}
+
+.new-updates-ranking {
+  display: flex; /* Sử dụng flexbox để sắp xếp hai box bên cạnh nhau */
+  justify-content: space-between; /* Căn giữa khoảng cách giữa hai box */
+  margin: 20px 0; /* Khoảng cách trên và dưới */
+  padding: 10px;
+  margin: auto;
+  max-width: 1250px;
+  width: 100%;
+  position: relative;
+  overflow: hidden; /* Ẩn thanh cuộn */
+}
+
+.left-box {
+  width: 63%; /* Đặt chiều rộng cho box bên trái */
+  padding: 15px; /* Khoảng cách bên trong */
+  /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);  */
+}
+
+.right-box {
+  width: 30%; /* Đặt chiều rộng cho box bên phải */
+  padding: 15px; /* Khoảng cách bên trong */
+  /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
+}
+
+.left-box h3,
+.right-box h3 {
+  margin: 0 0 10px; /* Khoảng cách dưới tiêu đề */
+  color: #1a73e8; /* Màu tiêu đề */
+}
+
+.content-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  background: #fefefe;
+  transition: all 0.3s ease;
+}
+
+.content-item:hover {
+  background: #f0f8ff;
+  border-color: #aad4f5;
+}
+
+.item-image {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.item-info {
+  margin-left: 12px;
+  flex: 1;
+}
+
+.item-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+}
+
+.item-views {
+  font-size: 13px;
+  color: #777;
+  margin-top: 2px;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Manga List Styles */
+.manga-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 15px;
+  padding: 20px;
+}
+
+.manga-item {
+  position: relative;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.2s;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.manga-thumb {
+  position: relative;
+  width: 100%;
+  padding-top: 160%;
+}
+
+.manga-thumb img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.stats-overlay {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  display: flex;
+  gap: 5px;
+}
+
+.view-count {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+}
+
+.up-badge {
+  background: #ff5b84;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+}
+
+.genre-tag {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  background: white;
+  color: #ff6b81;
+  padding: 2px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+}
+
+.manga-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 15px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.manga-title-text {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  position: absolute;
+  bottom: 15px;
+  transition: all 0.3s ease;
+}
+
+.read-now-btn {
+  opacity: 0;
+  background: #6c5ce7;
+  color: white;
+  padding: 8px 32px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  transform: translateY(20px);
+  position: absolute;
+  bottom: 15px;
+}
+
+.manga-thumb:hover .manga-title {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.7));
+}
+
+.manga-thumb:hover .manga-title-text {
+  transform: translateY(-40px);
+}
+
+.manga-thumb:hover .read-now-btn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.read-now-btn:hover {
+  background: #5f4ed6;
+  transform: scale(1.05);
+}
+
+.manga-item:hover {
+  transform: translateY(-3px);
+}
+
+/* Ranking Styles */
+.ranking-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 8px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #eee;
+  gap: 15px;
+}
+
+.rank {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  min-width: 25px;
+}
+
+.ranking-item img {
+  width: 60px;
+  height: 85px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.ranking-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ranking-info .genre {
+  color: #666;
+  font-size: 12px;
+  margin-bottom: -2px;
+}
+
+.ranking-info h4 {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #333;
+  font-weight: 500;
+}
+
+.ranking-info .author {
+  margin: 0;
+  color: #888;
+  font-size: 12px;
+}
+
+/* Thêm hover effect */
+.ranking-item:hover {
+  background-color: #f8f8f8;
+}
+
+.right-box {
+  padding: 15px;
+  min-height: 400px; /* Thêm chiều cao tối thiểu */
+}
+
+.title-wrapper {
+  margin-bottom: 20px;
+}
+
+.tab-content {
+  display: block; /* Đảm bảo tab-content hiển thị */
+}
+
+/* Smaller Reading History Items */
+#history .ranking-item {
+  padding: 8px 6px;
+  margin-bottom: 8px;
+}
+
+#history .ranking-item img {
+  width: 45px;
+  height: 65px;
+}
+
+#history .ranking-info {
+  gap: 2px;
+}
+
+#history .ranking-info .genre {
+  font-size: 11px;
+}
+
+#history .ranking-info h4 {
+  font-size: 13px;
+  margin-bottom: 2px;
+}
+
+#history .ranking-info .author {
+  font-size: 11px;
+}
+
+#history .rank {
+  font-size: 14px;
+  min-width: 20px;
+}
+
+/* Thêm CSS cho Recent Activity */
+#recent-activity .ranking-item {
+  padding: 8px 6px;
+  margin-bottom: 8px;
+}
+
+#recent-activity .ranking-item img {
+  width: 45px;
+  height: 65px;
+}
+
+#recent-activity .ranking-info {
+  gap: 2px;
+}
+
+#recent-activity .ranking-info .genre {
+  font-size: 11px;
+}
+
+#recent-activity .ranking-info h4 {
+  font-size: 13px;
+  margin-bottom: 2px;
+}
+
+#recent-activity .ranking-info .author {
+  font-size: 11px;
+}
+
+#recent-activity .rank {
+  font-size: 14px;
+  min-width: 20px;
+}
+
+#recent-activity .rank i {
+  font-size: 12px;
+}

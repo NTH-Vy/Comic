@@ -1,0 +1,290 @@
+*{
+    box-sizing: border-box;
+    font-family: sans-serif;
+    font-size: 0.7vw ;
+}
+.boxcenter{
+    width: 70%;
+    margin: 0 auto;
+}
+.row{
+    float: left;
+    width: 100%;
+}
+.mb{
+    margin-bottom: 20px;
+}
+.mb10{
+    margin-bottom: 10px;
+}
+.mr{
+    margin-right: 2%;
+}
+.demo{
+    background-color: antiquewhite;
+    min-height: 100px;
+}
+/* đầu trang web */
+.header{
+    background-color: #def5f7 ;
+    border: 1px #090 solid;
+    font-size: 1vw;
+    color: blue;
+    border-radius: 5px;
+}
+header a{
+    width: 20px;
+    height: 20px;
+}
+.header h1{
+    margin: 20px;
+    font-size: 1.2vw;
+}
+/* thanh navbar(menu) */
+.menu{
+    background-color: #16565b;
+    color: #ccc;
+    border-radius: 5px;
+}
+.menu ul{
+    padding: 0px 10px;
+}
+.menu ul li{
+    list-style-type: none;
+    display: inline;
+    padding: 0px 15px;
+}
+.menu ul li a{
+    color: #ccc;
+    text-decoration: none;
+    transition: 0.5s;
+}
+.menu ul li a:hover{
+    color: white;
+    font-size: 0.8vw;
+}
+/* nội dung trang */
+
+/* box trái */
+.boxtrai {
+    float: left;
+    width: 74%;
+}
+.banner{
+    min-height: 300px;
+    width: 100%;
+    text-align: center;
+}
+.banner img{
+    min-height: 300px;
+
+}
+.boxsp{
+    float: left;
+    width: 32%;
+    min-height: 300px;
+    border: 1px #eee solid;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+.boxsp .img{
+    min-height: 230px;
+    text-align: center;
+}
+.img img{
+    height: 220px;
+}
+
+/* box phải */
+.boxphai{
+    float: left;
+    width: 24%;
+}
+
+.boxtitle{
+    color: #333;
+    padding: 10px;
+    background-color: #eee;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border: 1px #ccc solid;
+}
+.boxcontent{
+    border-left: 1px #ccc solid;
+    border-right: 1px #ccc solid;
+    border-bottom: 1px #ccc solid;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    min-height: 200px;
+    padding: 20px;
+}
+.boxcontent2{
+    border-left: 1px #ccc solid;
+    border-right: 1px #ccc solid;
+    background-color: #eee;
+}
+.boxfooter{
+    padding: 10px;
+    background-color: #eee;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-left: 1px #ccc solid;
+    border-right: 1px #ccc solid;
+    border-bottom: 1px #ccc solid;
+}
+
+/* box tài khoản */
+.formtaikhoan{
+    line-height: 150%;
+}
+.formtaikhoan input[type="text"],
+.formtaikhoan input[type="email"],
+.formtaikhoan input[type="password"],
+.frmcontent input[type="text"]{
+    width: 100%;
+    border: 1px #ccc solid;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+.formtaikhoan input[type="checkbox"]{
+    border-radius: 5px;
+}
+.formtaikhoan input[type="submit"],
+.frmcontent input[type="submit"],
+.frmcontent input[type="reset"],
+.formtaikhoan input[type="reset"],
+.frmcontent input[type="button"]{
+    border-radius: 5px;
+    padding: 5px 10px;
+    background-color: white;
+    border: 1px #ccc solid;
+}
+.formtaikhoan input[type="submit"]:hover,
+.frmcontent input[type="submit"]:hover,
+.frmcontent input[type="reset"]:hover,
+.frmcontent input[type="button"]:hover{
+    background-color: #ccc;
+}
+.formtaikhoan li a{
+    color: teal;
+    text-decoration: none;
+}
+.formtaikhoan li a:hover{
+    color: #090;
+    text-decoration: underline;
+}
+/* box danh mục */
+.menudoc ul{
+    margin: 0;
+    list-style-type: none;
+    padding: 0;
+}
+.menudoc ul li{
+    padding: 10px 20px;
+    background-color: #fff;
+    border-bottom:1px #ccc solid;
+}
+.menudoc ul li a{
+    color:#333 ;
+    text-decoration: none;
+}
+.menudoc ul li:hover{
+    background-color: #ccc;
+}
+/* search box */
+.searbox input[type="text"]{
+    width: 100%;
+    padding: 5px 10px;
+    background-color: #fff;
+    border: 1px #ccc solid;
+    border-radius: 5px;
+    border: 1px #666 solid;
+}
+/* top 10 yêu thích */
+.top10 img{
+    width: 20%;
+    height: 50px;
+    float: left;
+    margin-right: 10px;
+}
+.top10 a{
+    color: #666;
+    text-decoration: none;
+}
+.top10 a:hover{
+    color: #000;
+    text-decoration: underline;
+}
+
+/* chân trang */
+.footer{
+    background-color: aquamarine;
+    border: 1px #090 solid;
+    font-size: 0.8vw;
+    color: blue;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+/* header admin trang admin */
+.headeradmin{
+    background-color: #eee;
+    border: 1px #ccc solid;
+    font-size: 1vw;
+    color: #666;
+    border-radius: 5px;
+    padding: 0px 20px;
+}
+.headeradmin h1{
+    font-size: 2vw;
+}
+.frmtitle{
+    background-color: #eee;
+    border: 1px #ccc solid;
+    font-size: 1vw;
+    color: #666;
+    border-radius: 5px;
+    padding: 0px 20px;
+}
+.frmcontent{
+    padding: 20px 0px;
+}
+/* trang danh sách loại hàng hoá */
+.frmdsloai table{
+    width: 100%;
+    border-collapse: collapse;
+}
+.frmdsloai table th {
+    
+    padding: 20px;
+    background-color: #ccc;
+}
+/* .frmdsloai table th:nth-child(2){
+    width: 30%;
+    background-color: #ccc;
+}
+.frmdsloai table th:nth-child(3){
+    width: 40%;
+    background-color: #ccc;
+}
+.frmdsloai table th:nth-child(4){
+    width: 20%;
+    background-color: #ccc;
+} */
+.frmdsloai table td{
+    padding: 10px 20px;
+    border: 1px #999 solid;
+}
+
+/* phần slide show */
+  /* css cho phần sản phẩm chi tiết */
+  .spct{
+    text-align: center;
+  }
+  /* thong báo */
+  .thongbao{
+    color: red;
+  }
+
+ 
+  
